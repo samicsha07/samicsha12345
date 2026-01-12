@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Simple Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .calculator {
+            background: white;
+            padding: 20px;
+            width: 300px;
+            margin: auto;
+            border-radius: 10px;
+            box-shadow: 0 0 10px gray;
+        }
+
+        input, select, button {
+            width: 90%;
+            padding: 10px;
+            margin: 8px 0;
+            font-size: 16px;
+        }
+
+        .result {
+            margin-top: 15px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<div class="calculator">
+    <h2>Simple Calculator</h2>
+
+    <input type="number" id="num1" placeholder="Enter first number">
+    <input type="number" id="num2" placeholder="Enter second number">
+
+    <select id="operation">
+        <option value="add">Add (+)</option>
+        <option value="sub">Subtract (-)</option>
+        <option value="mul">Multiply (*)</option>
+        <option value="div">Divide (/)</option>
+    </select>
+
+    <button onclick="calculate()">Calculate</button>
+
+    <div class="result" id="result"></div>
+</div>
+
+<script>
+    function calculate() {
+        let a = Number(document.getElementById("num1").value);
+        let b = Number(document.getElementById("num2").value);
+        let op = document.getElementById("operation").value;
+        let result;
+
+        if (op === "add") {
+            result = a + b;
+        } else if (op === "sub") {
+            result = a - b;
+        } else if (op === "mul") {
+            result = a * b;
+        } else if (op === "div") {
+            if (b === 0) {
+                result = "Error! Division by zero";
+            } else {
+                result = a / b;
+            }
+        }
+
+        document.getElementById("result").innerText = "Result: " + result;
+    }
+</script>
+
+</body>
+</html>
